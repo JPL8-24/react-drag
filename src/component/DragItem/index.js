@@ -1,7 +1,6 @@
 import React, { PureComponent, createRef } from 'react';
 import EventEmitter from '../../utils/eventEmitter';
 import PropTypes from 'prop-types';
-import './index.less';
 
 class DragItem extends PureComponent {
   constructor(props) {
