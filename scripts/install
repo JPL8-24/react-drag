@@ -1,0 +1,8 @@
+#!/bin/bash
+client="$PWD"
+cd $client 
+echo "cd client && npm install"
+npm i -d --registry=http://registry.npmjs.lianjia.com:7001
+echo "install cli plugins"
+octopus invoke all
+echo "done!"

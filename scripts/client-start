@@ -1,0 +1,4 @@
+#!/bin/bash
+client="$PWD"
+cd $client 
+npm start

@@ -1,0 +1,8 @@
+#!/bin/bash
+dir="$PWD/styles"
+find "$dir" -name '*.less' | while read line; do
+    REPLACE=`echo $line | sed "s|\.less|\.css|"`
+    relativePath=${REPLACE#$PWD/}
+    echo "$PWD/${relativePath/styles/dist}"
+    (lessc "$line" "$PWD/${relativePath/styles/dist}" &)
+done
