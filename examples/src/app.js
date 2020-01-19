@@ -24,7 +24,7 @@ class Wrapper extends PureComponent {
       <DragWrapper onChange={this.dragChange} dataSource={dataSource} layout='horizontal'>
         {
         dataSource.map((item,index) => (
-          <DragItem  key={index} ItemClass='drag_Item' >
+          <DragItem  key={index} ItemClass='drag_Item'>
             {item}
           </DragItem>
         ))

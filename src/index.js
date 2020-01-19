@@ -1,5 +1,5 @@
 import DragWrapper from './component/DragWrapper/index';
-import '../styles/index.less';
+import '../dist/index.css';
 
 export default DragWrapper;
 

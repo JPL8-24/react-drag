@@ -16,17 +16,19 @@ class DragWrapper extends PureComponent {
 
   static defaultProps = {
     layout:'horizontal',
-    wrapperClass:''
+    wrapperClass:'',
+    tag:1
   }
 
   static DragItem = DragItem;
 
   componentWillMount() {
     //监听子组件方法
-    EventEmitter.on('dragStart', this.DragStart);
-    EventEmitter.on('dragEnd', this.DragEnd);
-    EventEmitter.on('dragEnter', this.DragEnter);
-    EventEmitter.on('pullChild', this.PullChild);
+    const {tag} = this.props;
+    EventEmitter.on(`dragStart_${tag}`, this.DragStart);
+    EventEmitter.on(`dragEnd_${tag}`, this.DragEnd);
+    EventEmitter.on(`dragEnter_${tag}`, this.DragEnter);
+    EventEmitter.on(`pullChild_${tag}`, this.PullChild);
   }
 
   DragStart = (vnode) => {
@@ -36,6 +38,7 @@ class DragWrapper extends PureComponent {
   };
 
   DragEnter = (vnode) => {
+    console.log(vnode)
     this.setState(
       {
         toDom: vnode
@@ -91,7 +94,9 @@ class DragWrapper extends PureComponent {
     this.setState({
       dragChildren:realList
     });
-    this.props.onChange(newData,order); // 新数组的顺序就对应打乱Dom的序号，派发出去
+    if(this.props.onChange) {
+      this.props.onChange(newData,order); // 新数组的顺序就对应打乱Dom的序号，派发出去
+    }
   }
 
   render() {

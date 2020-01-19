@@ -11,12 +11,14 @@ class DragItem extends PureComponent {
 
   static defaultProps ={
     draggable:true,
-    ItemClass:''
+    ItemClass:'',
+    tag:1
   }
 
   DragStart = () => {
     this.dragItmeRef.current.style.opacity = 0.3;
-    EventEmitter.emit('dragStart', this.dragItmeRef.current);
+    const {tag} = this.props;
+    EventEmitter.emit(`dragStart_${tag}`, this.dragItmeRef.current);
     if(this.props.onDragStart) {
       this.props.onDragStart();
     }
@@ -24,21 +26,24 @@ class DragItem extends PureComponent {
 
   DragEnd = () => {
     this.dragItmeRef.current.style.opacity = 1;
-    EventEmitter.emit('dragEnd', this.dragItmeRef.current);
+    const {tag} = this.props;
+    EventEmitter.emit(`dragEnd_${tag}`, this.dragItmeRef.current);
     if(this.props.onDragEnd) {
       this.props.onDragEnd();
     }
   };
 
   DragEnter = () => {
-    EventEmitter.emit('dragEnter', this.dragItmeRef.current);
+    const {tag} = this.props;
+    EventEmitter.emit(`dragEnter_${tag}`, this.dragItmeRef.current);
     if(this.props.onDragEnter) {
       this.props.onDragEnter();
     }
   };
 
   componentDidMount() {
-    EventEmitter.emit('pullChild',this.dragItmeRef.current)
+    const {tag} = this.props;
+    EventEmitter.emit(`pullChild_${tag}`,this.dragItmeRef.current)
   }
 
   render() {

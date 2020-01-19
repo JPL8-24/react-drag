@@ -1,6 +1,6 @@
 {
-  "name": "@lianjia/pl-drag",
-  "version": "1.0.1",
+  "name": "@lianjia/drag-layout",
+  "version": "1.0.6",
   "main": "lib/index.js",
   "scripts": {
     "clean:commonjs": "rimraf lib",
