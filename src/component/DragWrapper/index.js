@@ -31,6 +31,15 @@ class DragWrapper extends PureComponent {
     EventEmitter.on(`pullChild_${tag}`, this.PullChild);
   }
 
+  componentWillUnmount(){
+    const {tag} = this.props;
+    EventEmitter.remove(`dragStart_${tag}`, this.DragStart);
+    EventEmitter.remove(`dragEnd_${tag}`, this.DragEnd);
+    EventEmitter.remove(`dragEnter_${tag}`, this.DragEnter);
+    EventEmitter.remove(`pullChild_${tag}`, this.PullChild);
+  }
+
+
   DragStart = (vnode) => {
     this.setState({
       fromDom: vnode
@@ -38,14 +47,13 @@ class DragWrapper extends PureComponent {
   };
 
   DragEnter = (vnode) => {
-    console.log(vnode)
     this.setState(
       {
         toDom: vnode
       },
       () => {
         const { fromDom, toDom } = this.state;
-        if (fromDom === toDom) {
+        if (fromDom === toDom || !this.wrapperRef.current.contains(fromDom)) {
           return;
         }
         if (this.isPrevNode(fromDom, toDom)) {
@@ -66,7 +74,13 @@ class DragWrapper extends PureComponent {
   };
 
   DragEnd = (vnode) => {
-    const { dragChildren } = this.state;
+    const { dragChildren ,fromDom,toDom} = this.state;
+    // if(fromDom === toDom || !this.wrapperRef.current.contains(fromDom)) {
+    //   return;
+    // }
+    if(!this.wrapperRef.current.contains(toDom)) {
+      return;
+    }
     const realDom = Array.from(this.wrapperRef.current.children);
     this.getDataOrder(realDom, dragChildren);
   };
