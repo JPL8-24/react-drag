@@ -1,13 +1,13 @@
-##简介
+## 简介
 一个拖拽布局的组件
-####使用效果
+#### 使用效果
 对一些需要拖拽布局的场景可能会有用
 ![Alt text](https://github.com/externalFa/About-interview/blob/master/img/Untitled.gif?raw=true)
-####下载
+#### 下载
 ```npm
 npm install @lianjia/drag-layout --save
 ```
-####使用方法
+#### 使用方法
 ```javascript
 import DragWrapper from '@lianjia/drag-layout';
 const {DragItem} = DragWrapper;
@@ -48,7 +48,7 @@ class Wrapper extends PureComponent {
 }
 ```
 
-####DragWrapper的属性说明
+#### DragWrapper的属性说明
 属性 | 说明 | 类型 | 默认值
 ------------ | ------------- | ------------ | ------------
 layout | DragItem的布局，horizontal为水平布局，vertical为垂直布局  | String | horizontal
@@ -57,7 +57,7 @@ onChange | 当拖拽布局发生变化时的回调函数。回调的参数有两
 dataSource | 生成dragItem的数据源（必填）  | Array | []
 mark | 当一个页面有多个DragWrapper时，这个参数用作区分不同的DragWrapper。当有多个DragWrapper时，这个参数时必填且唯一的。  | String（Number） | 1
 
-####DragItem的属性说明
+#### DragItem的属性说明
 
 属性 | 说明 | 类型 | 默认值
 ------------ | ------------- | ------------ | ------------
@@ -70,7 +70,7 @@ onDragStart | DragStart回调事件  | (event) => void | []
 mark | 当一个页面有多个DragWrapper时，这个参数用作区分不同的DragWrapper。当有多个DragWrapper时，这个参数时必填且唯一的。  | String（Number） | 1
 
 
-####注意事项
+#### 注意事项
 1.当一个页面有多个wrapper时，DragWrapper和DragItem必须有mark参数且DragWrapper间mark值不同，否则页面会白屏。
 2.drag事件发生了就会触发onChange回调（正在解决）
 3.有问题联系jiangpanlei001@ke.com
