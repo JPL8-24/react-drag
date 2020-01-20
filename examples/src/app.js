@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import DragWrapper from '@';
-import { Input, Button, Select } from 'antd';
+// import { Input, Button, Select } from 'antd';
 
 const { DragItem } = DragWrapper;
 import './index.less';
@@ -10,7 +10,7 @@ class Wrapper extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      dataSource: [<Input value='111s'></Input>, <Input></Input>, <Button>123123</Button>, <Input></Input>, <Select></Select>, <Select></Select>]
+      dataSource: [11,22,33,44,55]
     };
   }
 
@@ -22,16 +22,16 @@ class Wrapper extends PureComponent {
     const { dataSource } = this.state;
     return (
       <React.Fragment>
-        <DragWrapper onChange={this.dragChange} dataSource={dataSource} layout='horizontal' tag={1}>
+        <DragWrapper onChange={this.dragChange} dataSource={dataSource} layout='horizontal' mark={1}>
           {dataSource.map((item, index) => (
-            <DragItem key={index} ItemClass='drag_Item' tag={1}>
+            <DragItem key={index} ItemClass='drag_Item' mark={1}>
               {item}
             </DragItem>
           ))}
         </DragWrapper>
-        <DragWrapper onChange={this.dragChange} dataSource={dataSource} layout='horizontal' tag={2}>
+        <DragWrapper onChange={this.dragChange} dataSource={dataSource} layout='horizontal' mark={2}>
           {dataSource.map((item, index) => (
-            <DragItem key={index} ItemClass='drag_Item' tag={2}>
+            <DragItem key={index} ItemClass='drag_Item' mark={2}>
               {item}
             </DragItem>
           ))}

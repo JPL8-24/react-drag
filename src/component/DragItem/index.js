@@ -12,13 +12,13 @@ class DragItem extends PureComponent {
   static defaultProps ={
     draggable:true,
     ItemClass:'',
-    tag:1
+    mark:1
   }
 
   DragStart = () => {
     this.dragItmeRef.current.style.opacity = 0.3;
-    const {tag} = this.props;
-    EventEmitter.emit(`dragStart_${tag}`, this.dragItmeRef.current);
+    const {mark} = this.props;
+    EventEmitter.emit(`dragStart_${mark}`, this.dragItmeRef.current);
     if(this.props.onDragStart) {
       this.props.onDragStart();
     }
@@ -26,24 +26,31 @@ class DragItem extends PureComponent {
 
   DragEnd = () => {
     this.dragItmeRef.current.style.opacity = 1;
-    const {tag} = this.props;
-    EventEmitter.emit(`dragEnd_${tag}`, this.dragItmeRef.current);
+    const {mark} = this.props;
+    EventEmitter.emit(`dragEnd_${mark}`, this.dragItmeRef.current);
     if(this.props.onDragEnd) {
       this.props.onDragEnd();
     }
   };
 
   DragEnter = () => {
-    const {tag} = this.props;
-    EventEmitter.emit(`dragEnter_${tag}`, this.dragItmeRef.current);
+    const {mark} = this.props;
+    EventEmitter.emit(`dragEnter_${mark}`, this.dragItmeRef.current);
     if(this.props.onDragEnter) {
       this.props.onDragEnter();
     }
   };
 
+  handleClick = (e) => {
+    console.log(e);
+    if(this.props.onClick) {
+      this.props.onClick();
+    }
+  }
+
   componentDidMount() {
-    const {tag} = this.props;
-    EventEmitter.emit(`pullChild_${tag}`,this.dragItmeRef.current)
+    const {mark} = this.props;
+    EventEmitter.emit(`pullChild_${mark}`,this.dragItmeRef.current)
   }
 
   render() {
@@ -51,7 +58,7 @@ class DragItem extends PureComponent {
       <div className={`DragItem ${this.props.ItemClass}`} 
         draggable={this.props.draggable} 
         ref={this.dragItmeRef} 
-        onClick = {this.props.onClick}
+        onClick = {this.handleClick}
         onDragStart={this.DragStart} 
         onDragEnd={this.DragEnd} 
         onDragEnter={this.DragEnter}>

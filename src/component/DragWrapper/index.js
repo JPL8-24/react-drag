@@ -17,26 +17,27 @@ class DragWrapper extends PureComponent {
   static defaultProps = {
     layout:'horizontal',
     wrapperClass:'',
-    tag:1
+    mark:1,
+    dataSource:[]
   }
 
   static DragItem = DragItem;
 
   componentWillMount() {
     //监听子组件方法
-    const {tag} = this.props;
-    EventEmitter.on(`dragStart_${tag}`, this.DragStart);
-    EventEmitter.on(`dragEnd_${tag}`, this.DragEnd);
-    EventEmitter.on(`dragEnter_${tag}`, this.DragEnter);
-    EventEmitter.on(`pullChild_${tag}`, this.PullChild);
+    const {mark} = this.props;
+    EventEmitter.on(`dragStart_${mark}`, this.DragStart);
+    EventEmitter.on(`dragEnd_${mark}`, this.DragEnd);
+    EventEmitter.on(`dragEnter_${mark}`, this.DragEnter);
+    EventEmitter.on(`pullChild_${mark}`, this.PullChild);
   }
 
   componentWillUnmount(){
-    const {tag} = this.props;
-    EventEmitter.remove(`dragStart_${tag}`, this.DragStart);
-    EventEmitter.remove(`dragEnd_${tag}`, this.DragEnd);
-    EventEmitter.remove(`dragEnter_${tag}`, this.DragEnter);
-    EventEmitter.remove(`pullChild_${tag}`, this.PullChild);
+    const {mark} = this.props;
+    EventEmitter.remove(`dragStart_${mark}`, this.DragStart);
+    EventEmitter.remove(`dragEnd_${mark}`, this.DragEnd);
+    EventEmitter.remove(`dragEnter_${mark}`, this.DragEnter);
+    EventEmitter.remove(`pullChild_${mark}`, this.PullChild);
   }
 
 
@@ -75,9 +76,6 @@ class DragWrapper extends PureComponent {
 
   DragEnd = (vnode) => {
     const { dragChildren ,fromDom,toDom} = this.state;
-    // if(fromDom === toDom || !this.wrapperRef.current.contains(fromDom)) {
-    //   return;
-    // }
     if(!this.wrapperRef.current.contains(toDom)) {
       return;
     }
