@@ -3,13 +3,9 @@
 #### 使用效果
 对一些需要拖拽布局的场景可能会有用
 ![Alt text](https://github.com/externalFa/About-interview/blob/master/img/Untitled.gif?raw=true)
-#### 下载
-```npm
-npm install @lianjia/drag-layout --save
-```
 #### 使用方法
 ```javascript
-import DragWrapper from '@lianjia/drag-layout';
+import DragWrapper from 'drag-layout';
 const {DragItem} = DragWrapper;
 
 class Wrapper extends PureComponent {
@@ -73,7 +69,6 @@ mark | 当一个页面有多个DragWrapper时，这个参数用作区分不同�
 #### 注意事项
 1.当一个页面有多个wrapper时，DragWrapper和DragItem必须有mark参数且DragWrapper间mark值不同，否则页面会白屏。
 2.drag事件发生了就会触发onChange回调（正在解决）
-3.有问题联系jiangpanlei001@ke.com
 
 
 

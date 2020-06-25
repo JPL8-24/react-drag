@@ -112,7 +112,6 @@ module.exports = {
   },
   resolve: {
     alias: {
-      antd: '@lianjia/antd',
       '@': path.join(__dirname, 'src'),
     },
     extensions: [".js", ".json", ".jsx", ".less"],

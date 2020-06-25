@@ -1,5 +1,5 @@
 {
-  "name": "@lianjia/drag-layout",
+  "name": "drag-layout",
   "version": "0.0.3",
   "main": "lib/index.js",
   "scripts": {
@@ -31,8 +31,7 @@
     "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.44",
     "@babel/preset-env": "^7.0.0-beta.40",
     "@babel/preset-react": "^7.0.0-beta.40",
-    "@lianjia/antd": "^3.7.5",
-    "@lianjia/octopus-cli-plugin-eslint": "^1.0.0",
+    "antd": "^3.26.18",
     "babel-core": "^7.0.0-0",
     "babel-eslint": "^8.0.1",
     "babel-jest": "^23.0.1",

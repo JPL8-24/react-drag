@@ -2,7 +2,7 @@
 client="$PWD"
 cd $client 
 echo "cd client && npm install"
-npm i -d --registry=http://registry.npmjs.lianjia.com:7001
+npm i -d --registry=https://registry.npm.taobao.org/
 echo "install cli plugins"
 octopus invoke all
 echo "done!"
